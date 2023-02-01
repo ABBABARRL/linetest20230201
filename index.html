@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LIFF App</title>
+  </head>
+  <body>
+    <h1>特定保健指導</h1>
+    <form method="POST" action="/insert">
+      <p class="mt-3">ID</p>
+      <input type="text" name="lineid" placeholder="id" /><br>
+        <p class="mt-3">名前</p>
+      <input type="text" name="name" placeholder="name"><br>
+      <p class="mt-3">生年月日</p>
+      <select name="birth" id="id_year">
+        <!-- option要素がjavascriptのプログラムにより挿入される、id_year -->
+        </select>年
+        <select name="birth" id="id_month">
+        <!-- option要素がjavascriptのプログラムにより挿入される、id_month -->
+        </select>月
+        <select name="birth" id="id_day">
+        <!-- option要素がjavascriptのプログラムにより挿入される、id_day -->
+        </select>日<BR>
+      <p class="mt-3">１．最近の体重と腹囲について教えてください</p>
+      <input id="taiju-a" type="radio" name="taiju" value="1" onchange="chktaiju()"><label for="taiju-a">測定していないが変化はないと感じる</label><br>
+      <input id="taiju-b" type="radio" name="taiju" value="2" onchange="chktaiju()"><label for="taiju-b">測定していないが減少していると感じる</label><br>
+      <input id="taiju-c" type="radio" name="taiju" value="3" onchange="chktaiju()"><label for="taiju-c">測定していないが増加していると感じる</label><br>
+      <input id="taiju-d" type="radio" name="taiju" value="4" onchange="chktaiju()"><label for="taiju-d">測定した　</label><br>
+      <p>体重<input type = "number"  id="weight"  name="weight" step="0.1" min="1" required disabled> kg 
+        腹囲<input type = "number"  id="hukui"  name="hukui"  step="0.1" min="1" required disabled> cm<br></p>
+      <p class="mt-3" required>2. 減量でおこなったことを教えてください。（複数回答可能）</p>
+      <input id="genryo-a" type="checkbox" name="genryo-a" value="1" onclick="changeCheckbox()"><label for="genryo-a">食事・間食に気を付けた。</label><br>
+      <input id="genryo-b" type="checkbox" name="genryo-b" value="1" onclick="changeCheckbox()"><label for="genryo-b">アルコールを控えるようにした</label><br>
+      <input id="genryo-c" type="checkbox" name="genryo-c" value="1" onclick="changeCheckbox()"><label for="genryo-c">運動することを心掛けた</label><br>
+      <input id="genryo-d" type="checkbox" name="genryo-d" value="1" onclick="changeCheckbox2()"><label for="genryo-d">特に何もしていない</label><br>
+      <p class="mt-3">3. 2で1～3を選んだ場合、具体的に実行された内容を教えてください</p>
+      <input class="form-control w-100 mt-1" id="gutaiteki" name="gutaiteki"> 
+      <p class="mt-3">4. タバコは吸いますか？</p>
+      <input id="smoke-a" type="radio" name="smoke" value="1"><label for="smoke-a">習慣的に吸わない</label><br>
+      <input id="smoke-b" type="radio" name="smoke" value="2"><label for="smoke-b">禁煙に取り組んでいる(1本も吸わない)</label><br>
+      <input id="smoke-c" type="radio" name="smoke" value="3"><label for="smoke-c">喫煙しているが禁煙しようと考えている</label><br>
+      <input id="smoke-d" type="radio" name="smoke" value="4"><label for="smoke-d">喫煙しているが、禁煙に取り組み本数を減らしている</label><br>
+      <input id="smoke-e" type="radio" name="smoke" value="5"><label for="smoke-e">現在喫煙しており、禁煙する意思はない</label><br>
+      <input id="smoke-f" type="radio" name="smoke" value="6"><label for="smoke-f">禁煙していたが吸うようになった</label><br>
+      <p class="mt-3">5. 血圧の数値を測定した場合は教えてください。</p>
+      <p>最高血圧<input type = "number"  id="Hblood"  name="Hblood" step="1" min="1" value="100" required > mmHg
+        最低血圧<input type = "number"  id="Lblood"  name="Lblood" step="1" min="1" value="80" required > mmHg<br></p>
+      <p class="mt-3">6. 備考</p>
+      <input class="form-control -100 w-100 mt-1" id="bikou" name="bikou"><br>
+      <script src="script.js"></script>
+      <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+
+      <input type="submit" value="送信" />
+    </form>
+    <div id="app"></div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
